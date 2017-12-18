@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>在线培训-课程中心</title>
+<link rel="stylesheet" type="text/css" href="css/hui.css" />
+<link rel="stylesheet" href="./css/class.css">
+<style>
+[v-cloak] {
+	display: none;
+}
+</style>
+</head>
+<body>
+<div id="app" v-cloak>
+<header class="hui-header" id="header_details">
+	<div id="hui-back" class="details_back"></div>
+	<h1 class="details_title">{{details.title}}</h1>
+</header>
+<div class="hui-wrap">
+	<div class="hui-img-list">
+		<ul>
+			<li>
+				<a href="#">
+					<img v-bind:src="details.pic" alt="" class="imagePrev">
+					<div class="hui-img-list-content">
+						<h1>{{details.title}}</h1><br>
+						<p>课程创建时间：{{details.ctime}}</p><br>
+						<p>进行状态：{{details.status}}</p>
+					</div>
+				</a>
+				<div style="float:right;margin:10px 10px 0 0">
+					<div id="code"></div>
+					<div class="code_text">长按二维码报名</div>
+				</div>
+				
+			</li>
+		</ul>
+	</div>
+</div>
+
+<!-- 课程手风琴效果 -->
+
+<div class="hui-wrap" id="demo">
+		<div class="hui-accordion">
+			<div class="hui-accordion-title">课程简介</div>
+			<div class="hui-accordion-content">
+				<div class="hui-list">
+					<div class="list_content">
+						<!-- {{details.content}} -->
+						<div v-if="content!= ''" v-html="content">{{content}}</div>   
+						<div v-else style="color:#999;">暂无数据...</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hui-accordion">
+			<div class="hui-accordion-title">课程大纲</div>
+			<div class="hui-accordion-content">
+				<div class="hui-list">
+					<div class="list_content" v-for="(item,index) in details.courselist">
+							<div v-if="item.title!= ''">{{index+1}}.{{item.title}}</div>   
+							<div v-else style="color:#999;">暂无数据...</div>
+						<!-- <p>这里是课程大纲。这里是课程大纲。这里是课程大纲。这里是课程大纲。这里是课程大纲。这里是课程大纲。这里是课程大纲。这里是课程大纲。这里是课程大纲。这里是课程大纲。这里是课程大纲。这里是课程大纲。这里是课程大纲。</p> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hui-accordion">
+			<div class="hui-accordion-title">项目介绍</div>
+			<div class="hui-accordion-content">
+				<div class="hui-list">
+					<div class="list_content">
+							<div v-if="des!= ''" v-html="des">{{des}}</div>   
+							<div v-else style="color:#999;">暂无数据...</div>
+						<!-- <p>这里是讲师介绍。测试测试这里是讲师介绍。测试测试这里是讲师介绍。测试测试这里是讲师介绍。测试测试这里是讲师介绍。测试测试这里是讲师介绍。测试测试这里是讲师介绍。测试测试这里是讲师介绍。测试测试这里是讲师介绍。测试测试这里是讲师介绍。测试测试</p> -->
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+</div>
+<!-- 课程手风琴效果结束 -->
+<script src="./js/jquery.min.js"></script>
+<script src="./js/vue.js"></script>
+<script src="./js/axios.min.js"></script>
+<script src="./commonjs/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="js/hui.js" charset="UTF-8"></script>
+<script src="./js/hui-accordion.js"></script>
+<script src="./js/hui-image-preview.js"></script>
+<script src="./commonjs/class_details.js"></script>
+</body>
+</html>

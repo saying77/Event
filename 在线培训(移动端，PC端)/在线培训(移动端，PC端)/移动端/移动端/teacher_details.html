@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>在线培训-课程中心</title>
+<link rel="stylesheet" type="text/css" href="css/hui.css" />
+<link rel="stylesheet" href="./css/class.css">
+<style>
+    [v-cloak]{
+        display:none;
+    }
+</style>
+</head>
+<body>
+<div class="container" v-cloak>
+<header class="hui-header" id="header_details">
+	<div id="hui-back" class="details_back"></div>
+	<h1 class="details_title">{{teacherDetails.name}}</h1>
+</header>
+<div class="hui-wrap">
+	<div class="hui-img-list">
+		<ul>
+			<li>
+				<a href="#">
+					<img v-bind:src="teacherDetails.pic" alt="" class="imagePrev">
+					<div class="hui-img-list-content">
+						<h1 style="font-weight:bold;">{{teacherDetails.name}}</h1>
+                        <p>所属城市：<span>{{teacherDetails.area}}</span></p>
+                        <p>教师等级：<span>{{teacherDetails.level}}</span></p>
+						<p>授课专业：<span>{{teacherDetails.scly}}</span></p>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="hui-wrap">
+    <div class="hui-tab">
+        <div class="hui-tab-title">
+            <div>资历简介</div>
+            <div>主讲课题</div>
+            <div>讲师介绍</div>
+        </div>
+        <div class="hui-tab-body">
+            <div class="hui-tab-item hui-list">
+                <div v-if="teacherDetails.zljj != ''" v-html="teacherDetails.zljj">{{teacherDetails.zljj}}</div> 
+                <div v-else style="color:#999;">数据为空...</div>
+                <br/>  
+            </div>
+            <div class="hui-tab-item hui-list">
+                <div v-if="teacherDetails.zjkt != ''" v-html="teacherDetails.zjkt">{{teacherDetails.zjkt}}</div>   
+                <div v-else style="color:#999;">数据为空...</div>
+            </div>
+            <div class="hui-tab-item hui-list">
+                <div v-if="content != ''" v-html="content">{{content}}</div>   
+                <div v-else style="color:#999;">数据为空...</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/vue.js"></script>
+<script src="./js/axios.min.js"></script>
+<script type="text/javascript" src="js/hui.js" charset="UTF-8"></script>
+<script src="./js/hui-accordion.js"></script>
+<script src="./js/hui-tab.js"></script>
+<script src="./commonjs/teacher_details.js"></script>
+<script>
+    hui.tab('.hui-tab');
+</script>
+</body>
+</html>

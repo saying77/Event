@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>在线培训-课程中心</title>
+<link rel="stylesheet" type="text/css" href="css/hui.css" />
+<link rel="stylesheet" href="./css/class.css">
+<style>
+	[v-cloak]{
+		display:none;
+	}
+</style>
+</head>
+<body>
+<header class="hui-header">
+	<a href="#">智汇云端</a>
+	<div id="hui-header-sreach">
+		<input type="search" id="key" name="key" class="searchKey" placeholder="请输入要搜索的课程" />
+	</div>
+</header>
+<div id="app" v-cloak style="margin-top:50px;">
+<div class="hui-wrap">
+	<div id="refreshContainer" class="hui-refresh" style="padding:0px 10px;">
+		<div class="hui-refresh-icon"></div>
+		<div class="hui-refresh-content hui-media-list">
+			<ul>
+				<li v-for="item in course">
+					<a v-bind:href="'class_details.html?id='+item.id">
+						<div class="hui-media-list-img">
+							<img v-bind:src="item.pic" alt="" width="95" height="66">
+						</div>
+						<div class="hui-media-content">
+							<h1>{{item.title}}</h1>
+							<p>进行状态：{{item.status}}</p>
+						</div>
+					</a>
+				</li>
+				<div v-show="course.length<8" style="color:#999;text-align:center;">后面没有更多的数据了...</div>
+			</ul>
+		</div>
+	</div>
+</div>
+</div>
+<div id="hui-footer">
+    <a href="./index.html" id="nav-home">
+        <div class="hui-footer-icons hui-icons-home"></div>
+        <div class="hui-footer-text">首页</div>
+    </a>
+    <a href="./class.html" id="nav-news">
+        <div class="hui-footer-icons hui-icons-news" style="color:#007AFF;"></div>
+        <div class="hui-footer-text" style="color:#007AFF;">课程中心</div>
+    </a>
+    <a href="./teacher.html" id="nav-forum">
+        <div class="hui-footer-icons hui-icons-forum"></div>
+        <div class="hui-footer-text">讲师中心</div>
+    </a>
+    <a href="http://zhyd.oraclebay.com/m/index.php/member/index/" id="nav-my">
+        <div class="hui-footer-icons hui-icons-my"></div>
+        <div class="hui-footer-text">我的</div>
+    </a>
+</div>
+<script type="text/javascript" src="js/hui.js" charset="UTF-8"></script>
+<script src="./js/vue.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/hui-refresh-load-more.js"></script>
+<script src="./commonjs/class.js"></script>
+</body>
+</html>

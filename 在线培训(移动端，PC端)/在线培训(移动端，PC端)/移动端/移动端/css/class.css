@@ -1,0 +1,98 @@
+/*课程中心*/
+
+.hui-header {
+    background:#c4a05a;
+    height:48px;
+    line-height:48px;
+    border-radius:2px;
+}
+.hui-header a {
+    color:#777d67;
+    font-size:14px;
+    margin-left:38px;
+    float:left;
+}
+#hui-header-sreach {
+    width:70%;
+    float:left;
+}
+#hui-header-sreach input {
+    width:220px;
+}
+.searchKey {
+    height:30px;
+    border:none;
+    text-indent:5px;
+    background:#a27f3e;
+    border-radius:5px;
+    color:#fff;
+}
+.hui-media-list {
+    padding-bottom:50px;
+}
+.hui-media-list ul li {
+    border:1px solid #eee;
+    box-shadow:0px 1px 1px rgba(0,0,0,0.2);
+    border-radius:2px;
+}
+/* 限制课程简介为三行 */
+.hui-media-content p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/*课程详情页*/
+
+#header_details {
+    background:#494D4E;
+}
+/* #header_details .details_back:before {
+    color:#fff;
+} */
+#header_details .details_title {
+    color:#fff;
+}
+.hui-img-list p {
+    width:75%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+/* 二维码s */
+/* #code {
+    position: absolute;
+    bottom:-3px;
+    right:35px;
+}
+.code_text{
+    position:absolute;
+    left:180px;
+    bottom:0px;
+    color:#a27f3e;
+} */
+.hui-img-list-content {
+    float:left;
+}
+.hui-img-list p {
+    width:100%;
+    font-size:12px;
+}
+.code_text {
+    color:#a27f3e;
+    font-size:14px;
+    text-align:center;
+}
+/* 二维码结束 */
+/* 折叠面板 */
+.list_content {
+    padding:20px 10px;
+}
+.list_content p {
+    text-indent:20px;
+    font-size:14px;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>在线培训-讲师中心</title>
+<link rel="stylesheet" type="text/css" href="css/hui.css" />
+<link rel="stylesheet" href="./css/class.css">
+<link rel="stylesheet" href="./css/teacher.css">
+<style>
+    [v-cloak]{
+        display:none;
+    }
+</style>
+</head>
+<body>
+<header class="hui-header">
+	<a href="#">智汇云端</a>
+	<div id="hui-header-sreach">
+		<input type="search" class="searchKey" id="key" name="key" placeholder="请输入要搜索的讲师" />
+	</div>
+</header>
+<div class="hui-wrap" style="padding-bottom:80px;">
+	<div id="refreshContainer" class="hui-refresh" style="padding:0px 10px;">
+        <div class="hui-refresh-icon"></div>
+        <div id="container" v-cloak>
+            <div class="hui-img-list" id="class_lists">
+                <ul>
+                    <li v-for="item in teacher">
+                        <!-- 直接跳转到三级页面。讲师详情页面 -->
+                        <a v-bind:href="'./teacher_details.html?id='+item.id">
+                            <img v-bind:src="item.pic" alt="" height="190">
+                            <div class="hui-img-list-content">
+                                <h1>{{item.name}}</h1>
+                                <p>金牌讲师</p><span>常住地：<span>{{item.area}}</span></span>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+	</div>
+</div>
+<div id="hui-footer">
+    <a href="./index.html" id="nav-home">
+        <div class="hui-footer-icons hui-icons-home"></div>
+        <div class="hui-footer-text">首页</div>
+    </a>
+    <a href="./class.html" id="nav-news">
+        <div class="hui-footer-icons hui-icons-news"></div>
+        <div class="hui-footer-text">课程中心</div>
+    </a>
+    <a href="./teacher.html" id="nav-forum">
+        <div class="hui-footer-icons hui-icons-forum" style="color:#007AFF;"></div>
+        <div class="hui-footer-text" style="color:#007AFF;">讲师中心</div>
+    </a>
+    <a href="http://zhyd.oraclebay.com/m/index.php/member/index/" id="nav-my">
+        <div class="hui-footer-icons hui-icons-my"></div>
+        <div class="hui-footer-text">我的</div>
+    </a>
+</div>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/vue.js"></script>
+<script type="text/javascript" src="js/hui.js" charset="UTF-8"></script>
+<script src="./js/hui-refresh-load-more.js"></script>
+<!-- <script src="./commonjs/class.js"></script> -->
+<script>
+    var vm = null;
+    hui.ready(function(){
+        hui.refresh('#refreshContainer', vm.refresh);
+        hui.loadMore(vm.getMore)
+    });
+    // 搜索
+    document.getElementById('key')
+            .addEventListener('keyup', function(e){
+                if(e.keyCode == 13){
+                    var kwd = hui('#key').val();
+                    if(kwd.length < 2){
+                        hui.toast('关键字至少2个字符');
+                        return false;
+                    }
+                    vm.key = kwd;
+                    vm.refresh();
+                }
+            });
+    vm = new Vue({
+        el:'#container',
+        data:{
+            teacher:'',
+            page:1,
+            pagesize:6,
+            key:'',
+            url:'http://zhyd.oraclebay.com/services/teacherlist.php'
+        },
+        methods: {
+            refresh:function(){
+                var _this = this;
+                hui.loading("加载中...");
+                _this.page = 1;
+                hui.postJSON(_this.url,
+                        {page:_this.page,pagesize:_this.pagesize,key:_this.key},
+                        function(res){
+                            console.log(res);
+                            hui.closeLoading();
+                            _this.teacher = res.info;
+                            vm.page=2;
+                            //结束刷新
+                            hui.endRefresh();
+                            //重置加载更多状态
+                            hui.resetLoadMore();
+                        },function(){
+                            hui.closeLoading();
+                            hui.upToast('连接服务器失败！');
+                            hui.endRefresh();
+                        });
+            },
+            getMore:function() {
+                var _this = this;
+                hui.postJSON(
+                        _this.url,
+                        {page:_this.page,pagesize:_this.pagesize,key:_this.key},
+                        function(res){
+                            console.log(res.info.length);
+                            //判断加载完毕
+                            if(res.info.length == 0){
+                                hui.endLoadMore(true, '已经到头了...');
+                                return false;
+                            }else {
+
+                                for (var i = 0; i < res.info.length; i++) {
+                                    _this.teacher.push(res.info[i]);
+                                }
+                                vm.page++;
+                                hui.endLoadMore();
+                            }
+                        }
+                );
+            }
+        }
+    });
+    
+</script>
+</body>
+</html>

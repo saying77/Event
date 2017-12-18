@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>智汇云端──在线培训</title>
+<link type="text/css" rel="stylesheet" href="css/hui.css" />
+<link rel="stylesheet" href="./css/style.css">
+<style>
+	[v-cloak]{
+		display:none;
+	}	
+</style>
+</head>
+<body>
+<header class="hui-header">
+	<a href="#">智汇云端</a>
+	<div id="hui-header-sreach">
+		<input type="search" class="searchKey" placeholder="请输入要搜索的课程" />
+	</div>
+</header>
+<div class="hui-wrap">
+	<div class="hui-swipe" id="swipe1">
+		<div class="hui-swipe-item"><img src="./img/01.jpg"/></div>
+		<div class="hui-swipe-item"><img src="./img/02.jpg"/></div>
+		<div class="hui-swipe-item"><img src="./img/03.jpg"/></div>
+		<div class="hui-swipe-item"><img src="./img/04.jpg"/></div>
+		<div class="hui-swipe-item"><img src="./img/05.jpg"/></div>
+	</div>
+</div>
+<!-- 首页最新课程 -->
+<div id="app" v-cloak>
+<div class="hui-wrap" style="padding-bottom:80px;">
+	<div class="hui-center-title">
+		<h1>最新课程</h1>
+	</div>
+	<div class="hui-img-list" id="class_lists" v-if="course!=0">
+		<ul>
+			<li v-for="item in course">
+				<!-- 直接跳转到三级页面。课程详情页面 -->
+				<a v-bind:href="'./class_details.html?id='+item.id">
+					<img v-bind:src="item.pic" alt="" width="280" height="190">
+					<div class="hui-img-list-content">
+                        <h1>{{item.title}}</h1>
+                        <p>{{item.status}}</p>
+                    </div>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div v-else style="text-align:center;color:#999;" class="error">暂无数据，请刷新或者联系管理员！</div>
+</div>
+</div>
+
+<div id="hui-footer">
+    <a href="./index.html" id="nav-home">
+        <div class="hui-footer-icons hui-icons-home" style="color:#007AFF;"></div>
+        <div class="hui-footer-text" style="color:#007AFF;">首页</div>
+    </a>
+    <a href="./class.html" id="nav-news">
+        <div class="hui-footer-icons hui-icons-news"></div>
+        <div class="hui-footer-text">课程中心</div>
+    </a>
+    <a href="./teacher.html" id="nav-forum">
+        <div class="hui-footer-icons hui-icons-forum"></div>
+        <div class="hui-footer-text">讲师中心</div>
+    </a>
+    <a href="http://zhyd.oraclebay.com/m/index.php/member/index/" id="nav-my">
+        <div class="hui-footer-icons hui-icons-my"></div>
+        <div class="hui-footer-text">我的</div>
+    </a>
+</div>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/vue.js"></script>
+<script type="text/javascript" src="js/hui.js"></script>
+<script src="./js/hui-swipe.js"></script>
+<script>
+	// 搜索栏点击
+	hui('#hui-header-sreach').click(function () {
+		//点击跳转搜索详情页
+		window.location.href="./search.html";
+	});
+	//轮播图
+	var swipe1 = new huiSwpie('#swipe1');
+	swipe1.autoplay = true;
+	swipe1.run();
+	// 接口
+	new Vue({
+		el:'#app',
+		data:{
+			course:''
+		},
+		mounted() {
+			var _this = this;
+			$.ajax({
+				method:'POST',
+				url:'http://zhyd.oraclebay.com/services/itemlist.php',
+				dataType:'json',
+				data:{
+					page:1,
+					pagesize:4
+				},
+				async:true,
+				success:function (result) {
+					_this.course = result.info;
+					console.log(result);
+				},
+				error:function (error) {
+					$('.error').html(error);
+				}
+			});
+		}
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+/*banner图区*/
+#home{width:100%;height:731px;background:url(../img/banner.png) no-repeat 50%;margin-top:85px;}
+#home .container{width:1200px;height:731px;margin:0 auto;position:relative;}
+#home ul{position:absolute;left:0;bottom:150px;}
+#home ul li{float:left;margin-right:35px;overflow:hidden;}
+#home li a{display:block;width:167px;height:48px;line-height:48px;text-align:center;font-size:18px;color:#11605e;background:#fff;border-radius:83px 83px;transition:background 2s;}
+#home .small_border{position:absolute;left:50%;bottom:-27px;margin-left:-27px;}
+#home li:hover a{color:#fff!important;background:linear-gradient(to bottom,#14bab4,#097da8)!important;}
+
+/*关于我们*/
+#about_us{width:1200px;height:502px;padding-top:44px;margin:0 auto;text-align:center;}
+#about_us img{width:383px;height:94px;}
+#about_us h3{font-size:36px;color:#333;margin-bottom:92px;}
+#about_us p{width:1109px;line-height:30px;font-size:16px;color:#666;display:inline-block;}
+.short_line{width:110px;height:2px;background:#bf9d5b;display:inline-block;margin-top:50px;}
+#about_us .short_line{margin-top:50px;}
+
+/*人才开发*/
+#personel{width:100%;overflow:hidden;}
+#personel .per_bg{width:100%;height:716px;background:url(../img/background1.png) no-repeat 50%;}
+#personel .contain{width:1200px;height:716px;margin:0 auto;text-align:center;padding-top:1px;}
+#personel .au_bg{font-size:72px;color:#21a5c6;font-weight:bold;margin-top:57px}
+#personel h3 img{width:161px;height:45px;}
+#personel #main_ul{margin-top:68px;height:334px;}
+#personel #main_ul li{width:266px;height:334px;margin-right:38px;border:solid 2px rgba(255,255,255,.4);background:rgba(35,161,184,.4);float:left;margin-right:38px;opacity:0;transform:translateY(250px);}
+#personel #main_ul li:last-of-type{margin-right:0!important;}
+#personel #main_ul li img{width:87px;height:82px;margin-top:71px;margin-bottom:72px;}
+#personel #main_ul li div,p{width:100%;text-align:center;}
+#personel #main_ul li p{font-size:30px;color:#fff;margin-bottom:12px;}
+#personel #main_ul li div:last-of-type{font-size:16px;margin-top:12px;color:rgba(255,255,255,.4);}
+#personel .li_action{box-shadow:0 1px 20px 0 rgba(255,255,255,.7);background:transparent;}
+.text_action{color:#fff!important;}
+.lo li{animation:run linear .5s both;}
+@keyframes run{
+	0%{opacity:0;transform:translateY(250px);}
+	100%{opacity:1;transform:translateY(0);}
+}
+
+/*成果展示*/
+.achievements{width:100%;overflow:hidden;}
+.achievements .container{width:1200px;overflow:hidden;margin:0 auto;padding-top:27px;text-align:center;}
+.achievements .au_bg{display:inline-block;}
+.achievements .au_bg img{width:560px;height:94px;}
+.achievements h3{font-size:36px;color:#333;margin-bottom:67px;}
+.achievements ul{overflow:hidden;}
+.achievements ul li{float:left;}
+.achievements ul li:first-of-type{width:205px;margin-right:138px;}
+.achievements ul li:nth-of-type(2){width:205px;margin-right:123px;}
+.achievements ul li:nth-of-type(3){width:240px;margin-right:117px;}
+.achievements ul li:last-of-type{width:172px;}
+.achievements li img{width:86px;height:86px;margin-bottom:42px;opacity:0;}
+.achievements li .counter{font-size:40px;color:#0a7f94;letter-spacing:1px;font-weight:bold;}
+.achievements li p{font-size:24px;color:#666;margin:0 0 5px;}
+.achievements li .ach_text{font-size:14px;color:#999;}
+.achievements .short_line{margin-top:70px;margin-bottom:70px;}
+.achievements .ac_img{animation:op linear 4s both;}
+@keyframes op{
+	0%{opacity:0;}
+	100%{opacity:1;}
+}
+
+/*双创服务*/
+#sevice{width:100%;overflow:hidden;}
+.sevice_bg{width:100%;height:716px;background:url(../img/background2.png) no-repeat 50%;height:716px;}
+.sevice_bg .container{width:1200px;height:716px;margin:0 auto;text-align:center;padding-top:1px;}
+.sevice_bg .au_bg{font-size:72px;color:#474747;font-weight:bold;margin-top:56px;}
+.sevice_bg .sc img{width:161px;height:45px;margin-top:12px;margin-bottom:90px;}
+.sevice_bg ul{height:333px;}
+.sevice_bg li{float:left;width:370px;margin-right:45px;height:333px;border-radius:4px 4px 0 0;opacity:0;transform:translateY(250px);}
+.sevice_bg li:last-of-type{margin-right:0!important;}
+.sevice_bg li .sevice_img{width:100%;height:235px;overflow:hidden;}
+.sevice_bg li .sevice_img img{width:100%;height:235px;transition:transform linear .5s}
+.sevice_bg li .caption{height:97px;background:#fff;position:relative;padding-top:1px;}
+.sevice_bg .caption h3{text-align:left;font-size:22px;margin-left:23px;color:#333;margin-top:23px;margin-bottom:5px;}
+.sevice_bg .caption p{text-align:left;margin-left:23px;font-size:18px;color:#999;}
+.sevice_bg .caption a{position:absolute;top:50%;margin-top:-12px;right:30px;}
+.sevice_bg .caption a img{width:16px;height:24px;}
+#sevice li:hover .sevice_img img{transform:scale(1.2);}
+.loo li{animation:runs linear .5s both;}
+@keyframes runs{
+	0%{opacity:0;transform:translateY(250px);}
+	100%{opacity:1;transform:translateY(0);}
+}
+
+/*创业园*/
+.create{width:1200px;overflow:hidden;padding-top:34px;text-align:center;padding-bottom:59px;margin:0 auto;}
+.create img{width:585px;height:94px;}
+.create h3{font-size:22px;color:#333;font-weight:bold;margin-bottom:32px;}
+.create h3:first-of-type{margin-top:16px;}
+.create h3:last-of-type{margin-top:65px;}
+.create p{width:993px;font-size:16px;line-height:30px;display:inline-block;}
+
+
+

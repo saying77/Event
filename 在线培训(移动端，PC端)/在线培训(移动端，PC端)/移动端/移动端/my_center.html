@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>HUI 用户中心界面</title>
+<link rel="stylesheet" type="text/css" href="css/hui.css" />
+<link rel="stylesheet" href="./css/my_center.css">
+</head>
+<body style="background:#F4F5F6;">
+<header class="hui-header" id="header">
+    <div id="hui-back"></div>
+    <h1>HUI 用户中心界面</h1>
+</header>
+<div class="hui-wrap">
+    <div class="hui-media-list" style="background:#FFFFFF; margin-top:28px;">
+        <ul>
+            <li style="margin:0px; padding:8px;">
+                <a href="javascript:hui.toast('hi...');">
+                    <div class="hui-media-list-img"><img src="./img/teacher_picture-01.jpg" /></div>
+                    <div class="hui-media-content">
+                        <h1>用户信息</h1>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="hui-list" style="background:#FFFFFF; margin-top:28px;">
+        <ul>
+            <li><a href="javascript:void(0);" class="hui-arrow hui-icons hui-icons-help">&nbsp;&nbsp;我的信息</a></li>
+            <li><a href="javascript:void(0);" class="hui-arrow hui-icons hui-icons-forum">&nbsp;&nbsp;我的订单</a></li>
+            <li><a href="javascript:void(0);" class="hui-arrow hui-icons hui-icons-write">&nbsp;&nbsp;我的课程</a></li>
+        </ul>
+    </div>
+    <div class="hui-list" style="background:#FFFFFF; margin-top:28px;">
+        <ul>
+            <li><a href="javascript:void(0);" class="hui-icons hui-icons-logoff" id="loginout">&nbsp;&nbsp;退出系统</a></li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="js/hui.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    var meuns = ['确定'];
+    var cancel = '取消';
+    hui('#loginout').click(function () {
+        hui.actionSheet(meuns,cancel,function (e) {
+        hui.toast(e.innerHTML);
+        });
+    });
+</script>
+</body>
+</html>
